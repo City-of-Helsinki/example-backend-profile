@@ -1,2 +1,4 @@
 .venv
+config.env
+docker-compose.override.yml
 __pycache__

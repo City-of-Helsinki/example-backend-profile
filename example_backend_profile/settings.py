@@ -7,6 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(
     DEBUG = (bool, True),
     SECRET_KEY = (str, ''),
+    ALLOWED_HOSTS=(list, []),
     OIDC_AUDIENCE = (str, ''),
     OIDC_API_SCOPE_PREFIX = (str, ''),
     OIDC_REQUIRE_API_SCOPE_FOR_AUTHENTICATION = (bool, False),
@@ -25,7 +26,7 @@ if DEBUG and not SECRET_KEY:
     SECRET_KEY = 'XXX'
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 
 # Application definition

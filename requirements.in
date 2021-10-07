@@ -1,4 +1,6 @@
 Django
 django-environ
 django-helusers
+djangorestframework
+drf-oidc-auth
 social-auth-app-django

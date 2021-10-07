@@ -2,10 +2,12 @@ from django.http import Http404
 from helsinki_gdpr.models import SerializableMixin
 from helsinki_gdpr.views import GDPRAPIView
 from helusers.oidc import ApiTokenAuthentication
+from rest_framework import status
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.exceptions import NotFound
 from rest_framework.generics import RetrieveAPIView, UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
 from users.models import UserData
 from users.permissions import IsSameUser
@@ -42,3 +44,17 @@ class ExampleGDPRAPIView(GDPRAPIView):
 
         self.check_object_permissions(self.request, userdata)
         return userdata
+
+    def get(self, request, *args, **kwargs):
+        """Get all the data this example service has about the user
+
+        As of now Helsinki GDPR API supports only one model. In this method
+        we gather data also from the user to be included in the returned data."""
+        userdata = self.get_object()
+        serialized_userdata = userdata.serialize()
+        serialized_user = userdata.user.serialize()
+
+        return Response(
+            {"key": "EXAMPLE_DATA", "children": [serialized_user, serialized_userdata]},
+            status=status.HTTP_200_OK,
+        )

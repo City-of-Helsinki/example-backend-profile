@@ -3,8 +3,12 @@ from helsinki_gdpr.models import SerializableMixin
 from helusers.models import AbstractUser
 
 
-class User(AbstractUser):
-    pass
+class User(AbstractUser, SerializableMixin):
+    serialize_fields = (
+        {"name": "first_name"},
+        {"name": "last_name"},
+        {"name": "email"},
+    )
 
 
 class UserData(SerializableMixin):

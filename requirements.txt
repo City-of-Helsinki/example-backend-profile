@@ -25,10 +25,13 @@ deprecation==2.1.0
 django==3.2.8
     # via
     #   -r requirements.in
+    #   django-cors-headers
     #   django-helusers
     #   djangorestframework
     #   drf-oidc-auth
     #   helsinki-profile-gdpr-api
+django-cors-headers==3.10.0
+    # via -r requirements.in
 django-environ==0.7.0
     # via -r requirements.in
 django-helusers==0.7.0

@@ -47,3 +47,46 @@ The server should now be running in http://localhost:8000.
 The server should now be running in http://localhost:8000.
 
 The Docker build doesn't automatically add an admin user so the admin UI can't be accessed unless such user is created manually.
+
+## Endpoints
+
+This example has two endpoints: for reading [UserData](users/models.py), and for querying Helsinki Profile. Both endpoints require authentication. The authentication is provided by bearer token which should be set in the HTTP header `Authorization`. The prefix should be `Bearer`. i.e.
+
+`Authorization: Bearer [API token for this backend from Tunnistamo]`
+
+
+
+### `/api/v1/myuserdata/`
+
+Method: GET
+
+Payload: None
+
+Endpoint for reading the user data values saved in the database. Example response:
+
+```json
+{
+  "pet_name": "Fifi",
+  "birthday": "1981-02-21"
+}
+```
+
+### `/api/v1/fillmybirthday/`-endpoint
+
+Method: POST
+
+Payload:
+```json
+{
+  "api_token": "[Helsinki profile backend API token from Tunnistamo]"
+}
+```
+|
+
+An example view which uses an API token to query the users national identification number from the Helsinki Profile and saves their birthday to the `UserData`. Example response:
+
+```json
+{
+  "birthday": "1981-02-21"
+}
+```

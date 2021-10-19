@@ -1,6 +1,6 @@
 from django.http import Http404
 from helsinki_gdpr.models import SerializableMixin
-from helsinki_gdpr.views import GDPRAPIView
+from helsinki_gdpr.views import DeletionNotAllowed, GDPRAPIView
 from helusers.oidc import ApiTokenAuthentication
 from rest_framework import status
 from rest_framework.authentication import SessionAuthentication
@@ -58,3 +58,14 @@ class ExampleGDPRAPIView(GDPRAPIView):
             {"key": "EXAMPLE_DATA", "children": [serialized_user, serialized_userdata]},
             status=status.HTTP_200_OK,
         )
+
+    def delete(self, request, *args, **kwargs):
+        """Delete user's UserData and User instances
+
+        If the pet_name is "nodelete" this view will indicate that the user can't
+        be deleted as to help testing the GDRP delete functionality."""
+        obj = self.get_object()
+        if obj.pet_name == "nodelete":
+            raise DeletionNotAllowed()
+
+        return super().delete(request, *args, **kwargs)

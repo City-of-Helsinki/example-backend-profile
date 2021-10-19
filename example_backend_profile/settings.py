@@ -20,6 +20,7 @@ env = environ.Env(
     GDPR_API_QUERY_SCOPE=(str, ""),
     GDPR_API_DELETE_SCOPE=(str, ""),
     HELUSERS_BACK_CHANNEL_LOGOUT_ENABLED=(bool, False),
+    HELSINKI_PROFILE_API_URL=(str, ""),
 )
 
 environ.Env.read_env(str(BASE_DIR / "config.env"))
@@ -133,6 +134,12 @@ GDPR_API_MODEL = "users.UserData"
 GDPR_API_QUERY_SCOPE = env("GDPR_API_QUERY_SCOPE")
 GDPR_API_DELETE_SCOPE = env("GDPR_API_DELETE_SCOPE")
 
+
+# Helsinki profile API
+
+HELSINKI_PROFILE_API_URL = env("HELSINKI_PROFILE_API_URL")
+
+
 # Password validation
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -177,4 +184,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 # Cross-Origin Resource sharing
 
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_URLS_REGEX = r"^/api/v1/myuserdata/$"
+CORS_URLS_REGEX = r"^/api/v1/(?:myuserdata|fillmybirthday)/$"

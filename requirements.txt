@@ -71,7 +71,7 @@ pycryptodomex==3.10.4
     # via pyjwkest
 pyjwkest==1.4.2
     # via drf-oidc-auth
-pyjwt==2.2.0
+pyjwt==2.4.0
     # via social-auth-core
 pyparsing==2.4.7
     # via packaging

@@ -51,7 +51,7 @@ ecdsa==0.17.0
     # via python-jose
 future==0.18.2
     # via pyjwkest
-helsinki-profile-gdpr-api==0.1.0
+helsinki-profile-gdpr-api==0.2.0
     # via -r requirements.in
 idna==3.2
     # via requests

@@ -16,4 +16,8 @@ class UserData(SerializableMixin):
     pet_name = models.CharField(max_length=255, null=True, blank=True)
     birthday = models.DateField(null=True, blank=True)
 
-    serialize_fields = ({"name": "pet_name"}, {"name": "birthday"})
+    serialize_fields = (
+        {"name": "user"},
+        {"name": "pet_name"},
+        {"name": "birthday"},
+    )

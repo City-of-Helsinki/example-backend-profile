@@ -2,12 +2,8 @@ import datetime
 
 import requests
 from django.conf import settings
-from django.http import Http404
-from helsinki_gdpr.models import SerializableMixin
-from helsinki_gdpr.views import DeletionNotAllowed, GDPRAPIView
 from helusers.oidc import ApiTokenAuthentication
 from requests import RequestException
-from rest_framework import status
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.exceptions import NotFound
 from rest_framework.generics import RetrieveAPIView, UpdateAPIView
@@ -111,46 +107,3 @@ class FillMyBirthday(APIView):
         userdata.save()
 
         return Response({"birthday": userdata.birthday})
-
-
-class ExampleGDPRAPIView(GDPRAPIView):
-    """GDPRAPIView which finds UserData instance by user UUID
-
-    This view is customized because helsinki-profile-gdpr-api expects the URL to
-    have the id of the GDPR_API_MODEL. In this example we have the user's UUID but
-    need to find the corresponding UserData instance instead."""
-
-    def get_object(self) -> SerializableMixin:
-        """Get the userdata corresponding the user UUID provided in the URL"""
-        try:
-            userdata = UserData.objects.get(user__uuid=self.kwargs["uuid"])
-        except UserData.DoesNotExist:
-            raise Http404("No userdata")
-
-        self.check_object_permissions(self.request, userdata)
-        return userdata
-
-    def get(self, request, *args, **kwargs):
-        """Get all the data this example service has about the user
-
-        As of now Helsinki GDPR API supports only one model. In this method
-        we gather data also from the user to be included in the returned data."""
-        userdata = self.get_object()
-        serialized_userdata = userdata.serialize()
-        serialized_user = userdata.user.serialize()
-
-        return Response(
-            {"key": "EXAMPLE_DATA", "children": [serialized_user, serialized_userdata]},
-            status=status.HTTP_200_OK,
-        )
-
-    def delete(self, request, *args, **kwargs):
-        """Delete user's UserData and User instances
-
-        If the pet_name is "nodelete" this view will indicate that the user can't
-        be deleted as to help testing the GDRP delete functionality."""
-        obj = self.get_object()
-        if obj.pet_name == "nodelete":
-            raise DeletionNotAllowed()
-
-        return super().delete(request, *args, **kwargs)

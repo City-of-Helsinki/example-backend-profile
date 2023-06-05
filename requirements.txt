@@ -10,7 +10,7 @@ authlib==1.2.0
     # via drf-oidc-auth
 cachetools==4.2.4
     # via django-helusers
-certifi==2021.5.30
+certifi==2023.5.7
     # via requests
 cffi==1.14.6
     # via cryptography

@@ -80,7 +80,7 @@ python3-openid==3.2.0
     # via social-auth-core
 pytz==2021.3
     # via django
-requests==2.26.0
+requests==2.31.0
     # via
     #   django-helusers
     #   drf-oidc-auth

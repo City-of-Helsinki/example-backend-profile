@@ -3,6 +3,5 @@ django-cors-headers
 django-environ
 django-helusers
 djangorestframework
-drf-oidc-auth
 helsinki-profile-gdpr-api
 social-auth-app-django

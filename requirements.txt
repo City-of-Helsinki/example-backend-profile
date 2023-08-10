@@ -39,7 +39,7 @@ django-cors-headers==3.10.0
     # via -r requirements.in
 django-environ==0.7.0
     # via -r requirements.in
-django-helusers==0.8.1
+django-helusers==0.9.0
     # via
     #   -r requirements.in
     #   helsinki-profile-gdpr-api
@@ -49,9 +49,7 @@ djangorestframework==3.12.4
     #   drf-oidc-auth
     #   helsinki-profile-gdpr-api
 drf-oidc-auth==3.0.0
-    # via
-    #   -r requirements.in
-    #   helsinki-profile-gdpr-api
+    # via helsinki-profile-gdpr-api
 ecdsa==0.17.0
     # via python-jose
 helsinki-profile-gdpr-api==0.2.0

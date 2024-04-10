@@ -8,9 +8,13 @@ This project **doesn't** demonstrate good practices about writing a Django serve
 
 ## Setting the environment
 
-By default the running environment is such that the service starts (in development mode) but it doesn't connect correctly to any authorization service it needs. To configure such a service do the following:
+By default the running environment is such that the service starts (in development mode)
+but it doesn't connect correctly to any authorization service it needs. To configure such
+a service do the following:
 
-Copy the file `config.env.example` to a file called `config.env` and adjust settings in that file as appropriate. Also copy the file `docker-compose.override.yml.example` to a file called `docker-compose.override.yml` so that the `config.env` file gets used when running the service with `docker-compose`. Now the `config.env` file is used for reading environment variables no matter which way you choose to run the server.
+Copy the file `config.env.example` to a file called `config.env` and adjust settings
+in that file as appropriate. Now the `config.env` file is used for reading environment
+variables no matter which way you choose to run the server.
 
 ## Running with (virtual) Python environment
 
@@ -42,9 +46,9 @@ The server should now be running in http://localhost:8000.
 
 ## Running with Docker
 
-    docker-compose up
+    docker compose up
 
-The server should now be running in http://localhost:8000.
+The server should now be running in http://localhost:8081.
 
 The Docker build doesn't automatically add an admin user so the admin UI can't be accessed unless such user is created manually.
 

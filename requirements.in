@@ -1,7 +1,8 @@
-Django
+Django~=3.2
 django-cors-headers
 django-environ
 django-helusers
 djangorestframework
 helsinki-profile-gdpr-api
 social-auth-app-django
+pip-tools

@@ -2,3 +2,6 @@
 config.env
 docker-compose.override.yml
 __pycache__
+.idea/
+.python-version
+db.sqlite3

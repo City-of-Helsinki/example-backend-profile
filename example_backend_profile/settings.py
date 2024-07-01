@@ -9,6 +9,7 @@ env = environ.Env(
     DEBUG=(bool, True),
     SECRET_KEY=(str, ""),
     ALLOWED_HOSTS=(list, []),
+    DJANGO_LOG_LEVEL=(str, "INFO"),
     OIDC_AUDIENCE=(list, []),
     OIDC_API_SCOPE_PREFIX=(list, []),
     OIDC_API_AUTHORIZATION_FIELD=(list, []),
@@ -192,3 +193,26 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_URLS_REGEX = r"^/api/v1/(?:myuserdata|fillmybirthday)/$"
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "timestamped_named": {
+            "format": "%(asctime)s %(name)s %(levelname)s: %(message)s",
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "timestamped_named",
+        },
+    },
+    "loggers": {
+        "": {
+            "handlers": ["console"],
+            "level": env("DJANGO_LOG_LEVEL"),
+        },
+    },
+}

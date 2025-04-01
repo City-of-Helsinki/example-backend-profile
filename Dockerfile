@@ -1,4 +1,8 @@
-FROM python:3.9
+# Used by Azure Devops to pull from internal registry
+ARG BUILDER_REGISTRY=registry.access.redhat.com
+# ==============================
+FROM ${BUILDER_REGISTRY}/ubi9/python-39:latest
+# ==============================
 
 WORKDIR /usr/src/app
 RUN chmod g+w /usr/src/app

@@ -2,8 +2,9 @@
 FROM registry.access.redhat.com/ubi9/python-39 AS appbase
 # ==============================
 
-WORKDIR /usr/src/app
-RUN chmod g+w /usr/src/app
+USER root
+# UBI image defaults to /opt/app-root/src
+WORKDIR /opt/app-root/src
 
 COPY requirements.txt ./
 RUN pip install --upgrade pip setuptools wheel \
@@ -16,3 +17,4 @@ COPY users/migrations/*.py users/migrations/
 COPY docker-entrypoint.sh ./
 
 ENTRYPOINT [ "./docker-entrypoint.sh" ]
+USER default

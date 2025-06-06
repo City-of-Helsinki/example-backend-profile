@@ -2,4 +2,4 @@
 
 ./manage.py migrate --noinput
 
-./manage.py runserver 0.0.0.0:8000
+./manage.py runserver --insecure 0.0.0.0:8000

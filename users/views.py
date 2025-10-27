@@ -27,7 +27,7 @@ class MyUserDataView(RetrieveAPIView, UpdateAPIView):
         try:
             return UserData.objects.get(user=self.request.user)
         except UserData.DoesNotExist:
-            raise NotFound()
+            raise NotFound() from None
 
 
 class FillMyBirthday(APIView):

@@ -31,7 +31,7 @@ DEBUG = env("DEBUG")
 
 SECRET_KEY = env("SECRET_KEY")
 if DEBUG and not SECRET_KEY:
-    SECRET_KEY = "XXX"
+    SECRET_KEY = "XXX"  # noqa: S105
 
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
@@ -108,7 +108,7 @@ AUTHENTICATION_BACKENDS = (
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/admin/"
 
-SESSION_SERIALIZER = "django.contrib.sessions.serializers.PickleSerializer"
+SESSION_SERIALIZER = "helusers.sessions.TunnistamoOIDCSerializer"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": ("helusers.oidc.ApiTokenAuthentication",),
@@ -128,7 +128,6 @@ SOCIAL_AUTH_TUNNISTAMO_KEY = env("SOCIAL_AUTH_TUNNISTAMO_KEY")
 SOCIAL_AUTH_TUNNISTAMO_SECRET = env("SOCIAL_AUTH_TUNNISTAMO_SECRET")
 SOCIAL_AUTH_TUNNISTAMO_OIDC_ENDPOINT = env("SOCIAL_AUTH_TUNNISTAMO_OIDC_ENDPOINT")
 
-from helusers.defaults import SOCIAL_AUTH_PIPELINE
 
 HELUSERS_BACK_CHANNEL_LOGOUT_ENABLED = env("HELUSERS_BACK_CHANNEL_LOGOUT_ENABLED")
 HELUSERS_USER_MIGRATE_ENABLED = env("HELUSERS_USER_MIGRATE_ENABLED")
@@ -152,7 +151,7 @@ HELSINKI_PROFILE_API_URL = env("HELSINKI_PROFILE_API_URL")
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",  # noqa: E501
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
@@ -174,7 +173,6 @@ TIME_ZONE = "UTC"
 
 USE_I18N = True
 
-USE_L10N = True
 
 USE_TZ = True
 

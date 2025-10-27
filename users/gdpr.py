@@ -1,4 +1,4 @@
-from helsinki_gdpr.types import Error, ErrorResponse, LocalizedMessage
+from helsinki_gdpr.types import Error, ErrorResponse
 
 
 def delete_gdpr_data(user_data, dry_run):

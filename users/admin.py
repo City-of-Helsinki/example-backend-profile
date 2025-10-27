@@ -17,13 +17,12 @@ class UserSocialAuthInline(admin.StackedInline):
     exclude = ["extra_data"]
     extra = 0
 
+    @admin.display(description=_("Extra data"))
     def get_extra_data(self, obj=None):
         if not obj or not obj.extra_data:
             return ""
 
-        return mark_safe(f"<pre>{escape(json.dumps(obj.extra_data, indent=4))}</pre>")
-
-    get_extra_data.short_description = _("Extra data")
+        return mark_safe(f"<pre>{escape(json.dumps(obj.extra_data, indent=4))}</pre>")  # noqa: S308
 
 
 class UserDataInline(admin.StackedInline):

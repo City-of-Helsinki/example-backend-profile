@@ -1,12 +1,12 @@
 from django.contrib import admin
-from django.urls import include, path, re_path
+from django.urls import include, path
 
 from users.views import FillMyBirthday, MyUserDataView
 
 from . import views
 
 urlpatterns = [
-    re_path(r"^$", views.index, name="index"),
+    path("", views.index, name="index"),
     path("api/v1/myuserdata/", MyUserDataView.as_view()),
     path("api/v1/fillmybirthday/", FillMyBirthday.as_view()),
     # In this example, the GDPR URL in the Profile backend should be

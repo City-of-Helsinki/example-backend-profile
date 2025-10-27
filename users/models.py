@@ -13,7 +13,7 @@ class User(AbstractUser, SerializableMixin):
 
 class UserData(SerializableMixin):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    pet_name = models.CharField(max_length=255, null=True, blank=True)
+    pet_name = models.CharField(max_length=255, null=True, blank=True)  # noqa: DJ001
     birthday = models.DateField(null=True, blank=True)
 
     serialize_fields = (

@@ -41,8 +41,8 @@ class ExampleUserAdmin(UserAdmin):
         if obj:
             fieldsets = deepcopy(fieldsets)
             fieldsets[1][1]["fields"] += ("uuid",)
-            permission_fields = list(fieldsets[2][1]["fields"])
-            fieldsets[2][1]["fields"] = tuple(permission_fields) + (
+            permission_fields = tuple(fieldsets[2][1]["fields"])
+            fieldsets[2][1]["fields"] = permission_fields + (
                 "department_name",
                 "ad_groups",
             )

@@ -6,3 +6,4 @@ djangorestframework
 helsinki-profile-gdpr-api
 social-auth-app-django
 pip-tools
+pytest-django

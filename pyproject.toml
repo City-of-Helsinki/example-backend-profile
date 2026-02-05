@@ -41,3 +41,6 @@ extend-per-file-ignores = { "*/migrations/*" = ["E501"], "*/tests/*" = ["E501", 
 strip-extras = true
 allow-unsafe = true
 generate-hashes = true
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "example_backend_profile.settings"

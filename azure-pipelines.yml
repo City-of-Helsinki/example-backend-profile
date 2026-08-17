@@ -29,7 +29,6 @@ stages:
     - script: |
           echo 'Running in workspace $(Pipeline.Workspace)'
           echo 'Build.SourceVersion: $(Build.SourceVersion)'
-          echo 'Build.SourceVersionMessage: $(Build.SourceVersionMessage)'
           echo 'Build.SourcesDirectory: $(Build.SourcesDirectory)'
           echo 'Build.ArtifactStagingDirectory: $(build.artifactstagingdirectory)'
     - task: DockerCompose@0

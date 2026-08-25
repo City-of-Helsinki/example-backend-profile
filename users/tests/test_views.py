@@ -4,6 +4,12 @@ from rest_framework import status
 from users.models import UserData
 
 
+def test_index_rejects_post(api_client):
+    response = api_client.post("/")
+
+    assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
+
+
 @pytest.mark.django_db
 class TestMyUserDataView:
     def test_get_userdata(self, api_client, user):

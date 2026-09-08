@@ -5,3 +5,7 @@ __pycache__
 .idea/
 .python-version
 db.sqlite3
+.coverage
+coverage.xml
+.pytest_cache/
+.ruff_cache/

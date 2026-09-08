@@ -16,31 +16,26 @@ Copy the file `config.env.example` to a file called `config.env` and adjust sett
 in that file as appropriate. Now the `config.env` file is used for reading environment
 variables no matter which way you choose to run the server.
 
-## Running with (virtual) Python environment
+## Running with Python environment
 
-Install Python virtual environment:
+This project uses [uv](https://docs.astral.sh/uv/) to manage the Python environment and dependencies. Install
+uv by following the [official installation instructions](https://docs.astral.sh/uv/getting-started/installation/).
 
-    python3 -m venv .venv
+Install dependencies (including Django). This creates a `.venv` virtual environment automatically:
 
-Activate it:
-
-    source .venv/bin/activate
-
-Install requirements (including Django):
-
-    pip install -r requirements.txt
+    uv sync
 
 Migrate Django database (this project uses the default sqlite database):
 
-    ./manage.py migrate
+    uv run manage.py migrate
 
 Create admin user in order to access the admin UI (optional):
 
-    ./manage.py createsuperuser
+    uv run manage.py createsuperuser
 
 Start the server:
 
-    ./manage.py runserver
+    uv run manage.py runserver
 
 The server should now be running in http://localhost:8000.
 
@@ -51,6 +46,43 @@ The server should now be running in http://localhost:8000.
 The server should now be running in http://localhost:8081.
 
 The Docker build doesn't automatically add an admin user so the admin UI can't be accessed unless such user is created manually.
+
+## Keeping Python dependencies up to date
+
+1. Add new packages to `pyproject.toml` under `[project].dependencies` (production), `[dependency-groups].dev`
+   (development) or `[dependency-groups].prod` (production-only, e.g. application servers).
+
+2. Update `uv.lock` after changing dependencies:
+
+       uv lock
+
+3. To update all dependencies to their newest allowed versions, run:
+
+       uv lock --upgrade
+
+4. To install dependencies (including development dependencies):
+
+       uv sync
+
+5. To install production dependencies only:
+
+       uv sync --no-dev --group prod
+
+## Code formatting
+
+This project uses [Ruff](https://docs.astral.sh/ruff/) for code formatting and quality checking. Ruff isn't
+declared as a project dependency, since it's normally run through the [`pre-commit`](https://pre-commit.com/)
+hooks configured in [`.pre-commit-config.yaml`](.pre-commit-config.yaml). If you want to run Ruff manually
+without using pre-commit, install it separately, e.g. with `uv tool install ruff` or `pipx install ruff`.
+
+Basic `ruff` commands:
+
+* lint: `ruff check`
+* apply safe lint fixes: `ruff check --fix`
+* check formatting: `ruff format --check`
+* format: `ruff format`
+
+`pre-commit` can be used to install and run all the formatting tools as git hooks automatically before a commit.
 
 ## Endpoints
 

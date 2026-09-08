@@ -47,6 +47,21 @@ The server should now be running in http://localhost:8081.
 
 The Docker build doesn't automatically add an admin user so the admin UI can't be accessed unless such user is created manually.
 
+By default, the Docker Compose setup runs the Django development server (`manage.py runserver`), which
+auto-reloads on code changes thanks to the bind-mounted source directory.
+
+### Running with uWSGI
+
+The server mode is controlled by the `DEV_SERVER` setting in `config.env`.
+
+To run the container with [uWSGI](https://uwsgi-docs.readthedocs.io/) instead, closer to how the
+application would run in production, set `DEV_SERVER=False` in `config.env` and (re)start Compose:
+
+    docker compose up --build
+
+uWSGI is served directly on http://localhost:8081 (no code auto-reload; restart the container after
+making changes). Switch back to the development server by setting `DEV_SERVER=True` in `config.env` again.
+
 ## Keeping Python dependencies up to date
 
 1. Add new packages to `pyproject.toml` under `[project].dependencies` (production), `[dependency-groups].dev`

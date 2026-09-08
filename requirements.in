@@ -1,9 +1,0 @@
-Django~=5.2
-django-cors-headers
-django-environ
-django-helusers
-djangorestframework
-helsinki-profile-gdpr-api
-social-auth-app-django
-pip-tools
-pytest-django

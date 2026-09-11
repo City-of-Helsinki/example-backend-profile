@@ -1,7 +1,7 @@
 [project]
 name = "example-backend-profile"
 requires-python = ">=3.12, <3.13"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
     "Django~=5.2",
     "django-cors-headers",

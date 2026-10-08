@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.1](https://github.com/City-of-Helsinki/example-backend-profile/compare/example-backend-profile-v0.2.0...example-backend-profile-v0.2.1) (2026-10-08)
+
+
+### Dependencies
+
+* Bump oauthlib from 3.3.1 to 4.0.0 ([f6aa535](https://github.com/City-of-Helsinki/example-backend-profile/commit/f6aa535f0c46d2e7242fd4e8f6e6b675aa49c315))
+* Bump pyjwt from 2.13.0 to 2.15.0 ([8a411ad](https://github.com/City-of-Helsinki/example-backend-profile/commit/8a411ad089e026334d2c14a5f56611f99642792a))
+* Bump urllib3 from 2.7.0 to 2.8.0 ([92de8c0](https://github.com/City-of-Helsinki/example-backend-profile/commit/92de8c084452510c2e99ee559353975b2e09aeba))
+
 ## [0.2.0](https://github.com/City-of-Helsinki/example-backend-profile/compare/example-backend-profile-v0.1.0...example-backend-profile-v0.2.0) (2026-09-14)
 
 

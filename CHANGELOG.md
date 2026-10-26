@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.2](https://github.com/City-of-Helsinki/example-backend-profile/compare/example-backend-profile-v0.2.1...example-backend-profile-v0.2.2) (2026-10-26)
+
+
+### Dependencies
+
+* Bump certifi from 2026.7.22 to 2026.10.19 ([b2a05eb](https://github.com/City-of-Helsinki/example-backend-profile/commit/b2a05ebf2eb551eb121b52d30cceaf6e6a53946a))
+* Bump djangorestframework from 3.18.0 to 3.18.2 ([df8ee6b](https://github.com/City-of-Helsinki/example-backend-profile/commit/df8ee6bb47cd9d07bac4e2fb65dfa58e182edb93))
+
 ## [0.2.1](https://github.com/City-of-Helsinki/example-backend-profile/compare/example-backend-profile-v0.2.0...example-backend-profile-v0.2.1) (2026-10-08)
 
 

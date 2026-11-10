@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.3](https://github.com/City-of-Helsinki/example-backend-profile/compare/example-backend-profile-v0.2.2...example-backend-profile-v0.2.3) (2026-11-10)
+
+
+### Dependencies
+
+* Bump authlib from 1.8.0 to 1.9.1 ([26f6a36](https://github.com/City-of-Helsinki/example-backend-profile/commit/26f6a361ff2b35d7c735a9dc62d8705d32bfc904))
+* Bump django-helusers from 1.3.0 to 1.3.2 ([d0da20e](https://github.com/City-of-Helsinki/example-backend-profile/commit/d0da20e0e0e31bab01dd35f61a80606a1fab74d3))
+* Bump joserfc from 1.7.5 to 1.7.6 ([eba231e](https://github.com/City-of-Helsinki/example-backend-profile/commit/eba231e7d41b462d2c14a544afb3f38d1879028d))
+* Bump oauthlib from 4.0.0 to 4.0.1 ([23020ab](https://github.com/City-of-Helsinki/example-backend-profile/commit/23020ab837d88485fdd2b0dcd48d64d150d86f95))
+* Bump social-auth-core from 5.1.0 to 6.2.0 ([84747c7](https://github.com/City-of-Helsinki/example-backend-profile/commit/84747c7cf3113a5896c0596d9135e9fe3f56a0a9))
+
 ## [0.2.2](https://github.com/City-of-Helsinki/example-backend-profile/compare/example-backend-profile-v0.2.1...example-backend-profile-v0.2.2) (2026-10-26)
 
 
